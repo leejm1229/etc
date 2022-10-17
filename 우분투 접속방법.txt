@@ -1,0 +1,28 @@
+접속방법
+chmod 400 ~/.ssh/ljm5524.pem
+ssh -i ljm5524.pem ubuntu@ec2-3-35-171-76.ap-northeast-2.compute.amazonaws.com
+
+접속경로
+http://ec2-3-35-171-76.ap-northeast-2.compute.amazonaws.com/
+
+프로젝트 파일들은 모두 /srv/ 폴더에 다운로드 받을 것입니다
+sudo chown -R ubuntu:ubuntu /srv/
+
+Cd /srv
+Git clone https://github.com/jeongmin1229/Project_03.git
+
+슬슬 프로젝트를 웹 서버와 이어주는 작업을 해야하는데, 그 전에 Django는 웹 서버와 직접적으로 통신할 수 없기 때문에 이를 중간에서 이어줄 python 프레임워크인 WSGI(Web Server Gateway Interface) server를 설치해 주어야 합니다.
+
+가상환경 활성화(ubuntu 홈 폴더)
+Source myvenv/bin/activate
+
+requirements.txt있는 경로로 들어가서
+pip3 install -r requirements.txt
+
+
+
+sudo ln -f /srv/Project_03/config/uwsgi/uwsgi.service /etc/systemd/system/uwsgi.service
+
+sudo cp -f /srv/Project_03/config/nginx/mysite.conf /etc/nginx/sites-available/mysite.conf
+
+sudo ln -sf /etc/nginx/sites-available/mysite.conf /etc/nginx/sites-enabled/mysite.conf

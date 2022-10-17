@@ -1,0 +1,27 @@
+chmod 400 newsflix.pem
+ssh -i newsflix.pem ubuntu@ec2-3-35-171-53.ap-northeast-2.compute.amazonaws.com
+
+sudo apt install docker
+sudo apt install docker.io
+
+Docker 오류나면
+ls -al /var/run/docker.sock
+ sudo usermod -a -G docker $USER
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+
+docker ps
+
+docker pull mysql:latest
+docker volume create mysql-volume(도커이름)
+docker volume ls
+
+
+docker run --name newsflix -e MYSQL_ROOT_PASSWORD=1234 -d -p 3306:3306 mysql:8.0.22
+docker exec -it newsflix bash
+
+CREATE DATABASE Newsflix DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+장고 DB감지
+Python manage.py inspectdb
