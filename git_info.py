@@ -53,6 +53,11 @@ git checkout -m '이름'
 
 깃 폴더 삭제
 rm -rf .git
+
+만약 git push 후
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'https://github.com/leejm1229/java-hanati.git'
+이런 오류가 난다면 명령어에 git push origin +main을 입력하면 된다.
 '''
 
 
