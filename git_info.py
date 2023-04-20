@@ -58,6 +58,8 @@ rm -rf .git
  ! [rejected]        main -> main (non-fast-forward)
 error: failed to push some refs to 'https://github.com/leejm1229/java-hanati.git'
 이런 오류가 난다면 명령어에 git push origin +main을 입력하면 된다.
+
+토큰 : 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
 '''
 
 
